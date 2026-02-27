@@ -1,0 +1,141 @@
+ 
+
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" href="/css/output.css" />>
+
+  <%- include('../partials/head') %>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] font-sans"
+  >
+
+  <%- include('../partials/header') %>
+
+    
+<main
+  class="min-h-screen flex flex-col items-center pt-28 text-center 
+         bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7]"
+>
+  <!-- HERO SECTION -->
+  <div class="max-w-4xl px-4">
+    <h1
+      class="text-5xl md:text-6xl font-extrabold text-[#390ee6] tracking-tight"
+    >
+      Discover your next stay
+    </h1>
+
+    <p class="mt-4 text-lg text-gray-600">
+      Book unique homes, experiences, and unforgettable places around the world.
+    </p>
+
+   
+  <ul
+    class="mt-16 grid grid-cols-1 m:grid-cols-2 lg:grid-cols-3 gap-12 px-6 w-full max-w-7xl"
+  >
+    <% registeredHomes.forEach(home => { %>
+
+    <li
+      class="group relative rounded-3xl overflow-hidden
+             bg-white/70 backdrop-blur-xl
+             border border-white/40 shadow-xl
+             hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
+    >
+      <!-- TOP GRADIENT LINE -->
+      <div
+        class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      ></div>
+
+      <!-- IMAGE -->
+      <div class="relative overflow-hidden">
+        <img
+          src="<%= home.photoUrl %>"
+          alt="<%= home.houseName %>"
+          class="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <!-- PRICE -->
+        <span
+          class="absolute top-4 right-4 bg-black/70 text-white px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-md"
+        >
+          ₹ <%= home.price %> / night
+        </span>
+
+        <!-- FAV BUTTON -->
+        <button
+          class="absolute top-4 left-4 bg-white/80 p-2 rounded-full shadow hover:scale-110 transition"
+        >
+          ❤️
+        </button>
+      </div>
+
+<div class="p-6 space-y-3 text-left">
+  <h3
+    class="text-2xl font-bold text-gray-800 group-hover:text-indigo-600 transition"
+  >
+    <%= home.houseName %>
+  </h3>
+
+  <p class="text-gray-500">📍 <%= home.location %></p>
+
+  <!-- PROPERTY TYPE + GUESTS -->
+  <div class="flex items-center justify-between text-sm text-gray-600">
+    <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">
+      🏠 <%= home.propertytype %>
+    </span>
+
+    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+      👥 Max <%= home.maxguest %> guests
+    </span>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+    <%= home.description %>
+  </p>
+
+  <div class="flex items-center justify-between pt-3">
+    <span class="flex items-center gap-1 text-yellow-500 font-semibold">
+      ⭐ <%= home.rating %>
+    </span>
+
+    <button
+      class="group relative px-6 py-2.5 rounded-full
+             bg-[#FF385C] text-white font-semibold text-sm
+             shadow-md hover:shadow-lg
+             hover:bg-[#E31C5F] active:scale-[0.96]
+             transition-all duration-200"
+    >
+      <span class="flex items-center gap-2">
+        Book now
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4 group-hover:translate-x-1 transition"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+
+    </li>
+
+    <% }) %>
+  </ul>
+
+  <!-- FOOTER TEXT -->
+  <p class="mt-20 text-lg text-gray-600 max-w-xl leading-relaxed">
+     Discover hand-picked homes, premium stays, and trusted hosts only on our platform.
+  </p>
+</main>
+  </body>
+</html>

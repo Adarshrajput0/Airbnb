@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Published • Airbnb Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] font-sans"
+  >
+    <!-- Navbar -->
+    <nav
+      class="w-full fixed top-0 left-0 z-50 backdrop-blur-md bg-white/80 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <h2
+          class="text-2xl font-bold text-[#ff385c] tracking-wide cursor-pointer"
+        >
+          Airbnb
+        </h2>
+
+        <a
+          href="/"
+          class="text-sm font-medium text-gray-700 hover:text-[#ff385c] transition"
+        >
+          Home
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="pt-40 pb-20 flex justify-center items-center">
+      <div
+        class="bg-white rounded-3xl shadow-2xl p-12 max-w-xl w-full text-center"
+      >
+        <!-- Success Icon -->
+        <div class="flex justify-center mb-6">
+          <div
+            class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="green"
+              class="w-10 h-10"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12.75l6 6 9-13.5"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-4xl font-semibold text-gray-800 mb-3">
+          Home published successfully
+        </h1>
+
+        <!-- Subtext -->
+        <p class="text-gray-500 text-sm mb-8 leading-relaxed">
+          Your home is now live and visible to guests. You can manage, edit, or
+          add more homes from your dashboard.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/"
+            class="px-6 py-3 rounded-xl font-medium text-white bg-gradient-to-r from-[#ff385c] to-[#e31c5f] hover:shadow-lg hover:-translate-y-0.5 transition"
+          >
+            View all homes
+          </a>
+
+          <a
+            href="/add-home"
+            class="px-6 py-3 rounded-xl font-medium border border-gray-300 text-gray-700 hover:bg-gray-100 transition"
+          >
+            Add another home
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

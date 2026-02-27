@@ -1,0 +1,154 @@
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/output.css" />
+
+  <%- include('../partials/head') %>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] font-sans"
+  >
+
+  <!-- <%- include('../partials/header') %> -->
+   <%- include('../partials/header', { 
+      isLoggedIn: isLoggedIn, 
+      user: user 
+}) %>
+<main
+  class="min-h-screen flex flex-col items-center pt-28 text-center 
+         bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7]"
+>
+
+  <!-- HERO -->
+  <div class="max-w-4xl px-4">
+    <h1
+      class="text-5xl md:text-6xl font-extrabold text-[#3013c5] tracking-tight"
+    >
+      Find your perfect stay ✨
+    </h1>
+
+    <p class="mt-4 text-lg text-gray-600">
+      Hand-picked homes, trusted hosts, unforgettable experiences.
+    </p>
+
+    <!-- SEARCH BAR -->
+    <!-- <div
+      class="mt-8 flex flex-wrap items-center justify-center gap-3 
+             bg-white shadow-xl rounded-2xl px-5 py-4 border"
+    >
+      <input
+        type="text"
+        placeholder="📍 Location"
+        class="outline-none px-3 py-2 rounded-lg border w-40"
+      />
+      <input
+        type="number"
+        placeholder="💰 Max price"
+        class="outline-none px-3 py-2 rounded-lg border w-32"
+      />
+      <button
+        class="px-6 py-2 rounded-xl bg-[#FF385C] text-white font-semibold hover:bg-[#E31C5F] transition"
+      >
+        Search
+      </button>
+    </div> -->
+  </div>
+
+  <!-- LISTINGS -->
+  <ul class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 px-6 max-w-7xl">
+
+    <% registeredHomes.forEach(home => { %>
+
+    <li class="group relative rounded-3xl overflow-hidden
+               bg-white/80 backdrop-blur-xl
+               border border-white/50 shadow-xl
+               hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+
+      <!-- Glow border -->
+      <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition
+                  bg-gradient-to-br from-pink-300/20 via-purple-300/20 to-indigo-300/20"></div>
+
+      <!-- Image -->
+      <div class="relative overflow-hidden">
+        <img
+          src="<%= home.photoUrl %>"
+          alt="<%= home.houseName %>"
+          class="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <!-- Badges -->
+        <span
+          class="absolute top-4 right-4 bg-black/70 text-white px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-md"
+        >
+          ₹ <%= home.price %> / night
+        </span>
+
+        <span
+          class="absolute top-4 left-4 bg-white/80 text-xs font-bold px-3 py-1 rounded-full shadow"
+        >
+          ⭐ Verified
+        </span>
+      </div>
+
+      <!-- Content -->
+      <!-- Content -->
+<div class="relative p-6 space-y-3 text-left">
+  <h3
+    class="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition"
+  >
+    <%= home.houseName %>
+  </h3>
+
+  <p class="text-gray-600">📍 <%= home.location %></p>
+
+  <!-- PROPERTY TYPE + GUEST -->
+  <div class="flex items-center justify-between text-sm text-gray-600 pt-1">
+    <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-semibold">
+      🏠 <%= home.propertytype %>
+    </span>
+
+    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full font-semibold">
+      👥 Max <%= home.maxguest %> guests
+    </span>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <p class="text-gray-600 text-sm leading-relaxed line-clamp-2">
+    <%= home.description %>
+  </p>
+
+  <div class="flex items-center justify-between pt-3">
+    <span class="flex items-center gap-1 text-yellow-500 font-semibold">
+      ⭐ <%= home.rating %> rating
+    </span>
+
+    <a
+      href="/homes/<%= home._id %>"
+      class="px-5 py-2 rounded-full bg-[#FF385C] text-white text-sm font-semibold
+             shadow hover:bg-[#E31C5F] hover:shadow-lg active:scale-95 transition"
+    >
+      View details
+    </a>
+  </div>
+
+  <div class="pt-3">
+    <%- include('../partials/favourite',{home:home}) %>
+  </div>
+</div>
+
+    </li>
+
+    <% }) %>
+  </ul>
+
+  <!-- FOOTER TEXT -->
+  <p class="mt-20 text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed">
+    🌍 Travel smarter. Stay better. Discover homes made for comfort.
+  </p>
+
+</main>
+
+
+   
+  </body>
+</html>

@@ -1,0 +1,226 @@
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/output.css" />
+
+  <%- include('../partials/head') %>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] font-sans"
+  >
+
+  <%- include('../partials/header') %>
+
+    <!-- <main
+      class="min-h-screen flex flex-col justify-center items-center pt-28 text-center bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7]"
+    >
+      <h1
+        class="text-5xl md:text-6xl font-bold text-[#222] tracking-tight relative group"
+      >
+        Here are our favourite homes:
+
+        <span
+          class="absolute left-1/2 bottom-[-10px] w-0 h-1 bg-[#ff385c] rounded-full transition-all duration-500 group-hover:w-2/5 group-hover:left-[30%]"
+        ></span>
+      </h1>
+
+      <div style="height: 40px"></div>
+
+ 
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <% favouriteHomes.forEach(home => { %>
+
+       <li class="group relative rounded-3xl overflow-hidden
+           bg-[#fff1f2]/80 backdrop-blur-xl
+           border border-white/40 shadow-lg
+           hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+
+         
+          <div
+            class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          ></div>
+
+
+          <div class="relative overflow-hidden">
+            <img
+              src="<%= home.photoUrl %>"
+              alt="<%= home.houseName %>"
+              class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+
+            <span
+              class="absolute top-4 right-4 bg-black/70 text-white px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-md"
+            >
+              ₹ <%= home.price %> / night
+            </span>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3
+              class="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition"
+            >
+              <%= home.houseName %>
+            </h3>
+
+            <p class="text-black text-m">📍 <%= home.location %></p>
+
+            <div class="h-px bg-gray-200 my-4"></div>
+
+            <div class="flex items-center justify-between">
+              <span
+                class="flex items-center gap-1 text-yellow-500 font-semibold"
+              >
+                ⭐ <%= home.rating %>
+              </span>
+
+              <form action ="/favourites/delete/<%= home._id %>" method="POST">
+             <button
+             type="submit"
+
+             class="group relative px-7 py-3 rounded-full
+         bg-[#FF385C] text-white font-semibold text-[15px]
+         shadow-md hover:shadow-lg
+         hover:bg-[#E31C5F] active:scale-[0.97]
+         transition-all duration-200
+         focus:outline-none focus:ring-2 focus:ring-[#FF385C]/40"
+>
+  <span class="relative flex items-center gap-2">
+    Remove from favourite
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-4 h-4 group-hover:translate-x-1 transition"
+         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 5l7 7-7 7" />
+    </svg>
+  </span>
+</button> 
+</form>
+
+  
+
+
+
+
+            </div>
+          </div>
+        </li>
+
+        <% }) %>
+      </ul>
+
+
+      <p
+        class="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed opacity-0 animate-fadeIn"
+      >
+        Discover unique places to stay, experiences to remember, and hosts who
+        care.
+      </p>
+    </main> -->
+<main class="pt-32 pb-24 bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] min-h-screen">
+
+  <!-- Page Header -->
+  <section class="max-w-7xl mx-auto px-6 mb-16">
+    <h1 class="text-6xl md:text-5xl font-semibold text-blue-900 mb-3">
+      Your favourites
+    </h1>
+    <p class="text-gray-500 max-w-2xl">
+      All the homes you love, saved in one place. Compare, plan, and book your next stay easily.
+    </p>
+  </section>
+
+  <!-- Info strip -->
+  <section class="max-w-7xl mx-auto px-6 mb-12">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white rounded-2xl shadow-sm border p-6">
+      <p class="text-gray-600 text-sm">
+        ❤️ Tip: Save homes to quickly access them later and compare prices, locations, and ratings.
+      </p>
+      <a
+        href="/"
+        class="text-sm font-medium text-[#ff385c] hover:underline"
+      >
+        Browse more homes →
+      </a>
+    </div>
+  </section>
+
+  <!-- Homes Grid -->
+  <section class="max-w-7xl mx-auto px-6">
+    <ul class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+
+      <% favouriteHomes.forEach(home => { %>
+
+      <li class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
+
+        <!-- Image -->
+        <div class="relative h-60 overflow-hidden">
+          <img
+            src="<%= home.photoUrl %>"
+            alt="<%= home.houseName %>"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-sm font-semibold text-gray-800 shadow">
+            ₹ <%= home.price %> / night
+          </span>
+
+          <span class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full shadow text-[#ff385c]">
+            ❤️
+          </span>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6">
+
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 leading-tight">
+              <%= home.houseName %>
+            </h3>
+
+            <span class="flex items-center gap-1 text-yellow-500 text-sm font-semibold">
+              ⭐ <%= home.rating %>
+            </span>
+          </div>
+
+          <p class="text-gray-500 text-sm mb-5">📍 <%= home.location %></p>
+
+          <div class="h-px bg-gray-200 mb-5"></div>
+
+          <!-- Actions -->
+          <div class="flex items-center justify-between gap-3">
+
+            <a
+              href="/homes/<%= home._id %>"
+              class="flex-1 text-center px-4 py-2 rounded-lg text-sm font-medium
+                     border border-gray-300 text-gray-700
+                     hover:border-[#ff385c] hover:text-[#ff385c]
+                     transition"
+            >
+              View details
+            </a>
+
+            <form action="/favourites/delete/<%= home._id %>" method="POST" class="flex-1">
+              <button
+                type="submit"
+                class="w-full px-4 py-2 rounded-lg text-sm font-medium
+                       bg-[#ff385c] text-white
+                       hover:bg-[#e31c5f] transition"
+              >
+                Remove
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </li>
+
+      <% }) %>
+
+    </ul>
+  </section>
+
+</main>
+
+
+
+  </body>
+</html>

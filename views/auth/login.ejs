@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<%- include('../partials/head', { pageTitle: 'Login' }) %>
+ <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<body>
+
+  <%- include('../partials/header') %>
+  <link rel="stylesheet" href="/css/login.css" />
+
+  <div class="center-wrapper">
+
+   <div class="login-form">
+    <form action="/login" method="POST">
+
+      <h2 class="text-center">Sign In</h2>
+         
+
+      <div class="form-group">
+  <div class="input-box">
+    <i class="fa fa-user"></i>
+    <% if ( errors.length > 0) { %>
+      <div class="error-alert">
+        <div class="error-header">
+          <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <ul class="error-list">
+          <% errors.slice(0,5).forEach(error => { %>
+            <li><%= error %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+      <div>
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      placeholder="Enter Your email"
+       value="<%= oldInput.email ? oldInput.email: '' %>"
+      required
+    />
+  </div>
+</div>
+
+
+      <div class="form-group">
+  <div class="input-box">
+    <i class="fa fa-lock"></i>
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+      placeholder="Password"
+      required
+    />
+  </div>
+</div>
+
+
+      <div class="button-btn">
+        <button type="submit" class="login-btn">
+  Log in
+</button>
+
+      </div>
+      
+      <div class="clearfix">
+        <label class="pull-left checkbox-inline">
+          <input type="checkbox"> Remember me
+        </label>
+        
+      </div>
+
+    </form>
+
+  </div>
+  </div>
+
+</body>
+</html>
+
+
+<!-- <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+  }
+
+  .login-form {
+    width: 520px;                 /* BIGGER CARD */
+    margin: 100px auto;
+  }
+
+  .login-form form {
+    background: #ffffff;
+    padding: 50px;                /* MORE SPACE */
+    border-radius: 16px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  .login-form h2 {
+    font-size: 30px;              /* BIG HEADING */
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+
+
+  .form-control {
+    height: 52px;                 /* BIG INPUT */
+    font-size: 20px;              /* READABLE TEXT */
+    padding-left: 20px;
+    padding-right: 130px;
+    
+    margin: 10px;
+    border:2px solid black;
+    border-radius: 15px;
+  }
+
+
+  .btn {
+    height: 52px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 8px;
+  }
+
+  .clearfix {
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
+  .login-form p {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+  .login-form a {
+    font-weight: 600;
+  }
+
+  
+body {
+  padding-top: 110px;   /* same height as navbar */
+}
+.input-box {
+  position: relative;
+}
+
+.input-box i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 18px;
+}
+
+.form-control {
+  width: 100%;
+  height: 52px;
+  font-size: 20px;
+  padding-left: 50px;   /* space for icon */
+  border: 2px solid black;
+  border-radius: 15px;
+  margin: 10px 0;
+}
+
+.error-header {
+  font-weight: bold;
+  color: #b02a37;
+  margin-bottom: 8px;
+}
+
+.error-list {
+  padding-left: 20px;
+  color: #842029;
+}
+
+.error-alert {
+  margin-bottom: 20px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #fdecea;
+  border: 1px solid #f5c2c7;
+}
+</style>  -->

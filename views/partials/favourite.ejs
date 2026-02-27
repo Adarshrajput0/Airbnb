@@ -1,0 +1,42 @@
+<form action="/favourites" method="POST" class="flex justify-center">
+  <input type="hidden" name="id" value="<%= home._id %>" />
+
+  <!-- <button
+    type="submit"
+    class="group flex items-center justify-center gap-2 w-full max-w-xs px-6 py-2.5 rounded-full bg-gradient-to-r !from-[#22c55e] !to-[#16a34a] !text-black font-semibold text-sm shadow-md hover:shadow-lg active:scale-[0.97] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400/40"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-4 h-4 group-hover:scale-110 transition"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M5 13l4 4L19 7"
+      />
+    </svg>
+
+    Add to favourites
+  </button> -->
+  <button
+    type="submit"
+    class="group flex items-center justify-center gap-2 w-full max-w-xs px-6 py-2.5 rounded-full bg-[#ff385c] text-white font-semibold text-sm shadow-md hover:bg-[#e31c5f] hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#ff385c]/40"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      class="w-4 h-4 group-hover:scale-110 transition"
+    >
+      <path
+        d="M12 21s-7.5-4.35-10-8.5C-0.5 8.5 2.5 4 7 4c2.1 0 3.6 1.2 5 2.8C13.4 5.2 14.9 4 17 4c4.5 0 7.5 4.5 5 8.5-2.5 4.15-10 8.5-10 8.5z"
+      />
+    </svg>
+
+    Add to favourites
+  </button>
+</form>
