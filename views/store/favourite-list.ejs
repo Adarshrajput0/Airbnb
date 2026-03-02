@@ -8,115 +8,13 @@
   <body
     class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] font-sans"
   >
+<!-- 
+  <%- include('../partials/header') %> -->
+  <%- include('../partials/header', { 
+      isLoggedIn: isLoggedIn, 
+      user: user 
+}) %>
 
-  <%- include('../partials/header') %>
-
-    <!-- <main
-      class="min-h-screen flex flex-col justify-center items-center pt-28 text-center bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7]"
-    >
-      <h1
-        class="text-5xl md:text-6xl font-bold text-[#222] tracking-tight relative group"
-      >
-        Here are our favourite homes:
-
-        <span
-          class="absolute left-1/2 bottom-[-10px] w-0 h-1 bg-[#ff385c] rounded-full transition-all duration-500 group-hover:w-2/5 group-hover:left-[30%]"
-        ></span>
-      </h1>
-
-      <div style="height: 40px"></div>
-
- 
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        <% favouriteHomes.forEach(home => { %>
-
-       <li class="group relative rounded-3xl overflow-hidden
-           bg-[#fff1f2]/80 backdrop-blur-xl
-           border border-white/40 shadow-lg
-           hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-
-         
-          <div
-            class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-          ></div>
-
-
-          <div class="relative overflow-hidden">
-            <img
-              src="<%= home.photoUrl %>"
-              alt="<%= home.houseName %>"
-              class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-
-            <span
-              class="absolute top-4 right-4 bg-black/70 text-white px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-md"
-            >
-              ₹ <%= home.price %> / night
-            </span>
-          </div>
-
-          <div class="p-6 space-y-3">
-            <h3
-              class="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition"
-            >
-              <%= home.houseName %>
-            </h3>
-
-            <p class="text-black text-m">📍 <%= home.location %></p>
-
-            <div class="h-px bg-gray-200 my-4"></div>
-
-            <div class="flex items-center justify-between">
-              <span
-                class="flex items-center gap-1 text-yellow-500 font-semibold"
-              >
-                ⭐ <%= home.rating %>
-              </span>
-
-              <form action ="/favourites/delete/<%= home._id %>" method="POST">
-             <button
-             type="submit"
-
-             class="group relative px-7 py-3 rounded-full
-         bg-[#FF385C] text-white font-semibold text-[15px]
-         shadow-md hover:shadow-lg
-         hover:bg-[#E31C5F] active:scale-[0.97]
-         transition-all duration-200
-         focus:outline-none focus:ring-2 focus:ring-[#FF385C]/40"
->
-  <span class="relative flex items-center gap-2">
-    Remove from favourite
-    <svg xmlns="http://www.w3.org/2000/svg"
-         class="w-4 h-4 group-hover:translate-x-1 transition"
-         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 5l7 7-7 7" />
-    </svg>
-  </span>
-</button> 
-</form>
-
-  
-
-
-
-
-            </div>
-          </div>
-        </li>
-
-        <% }) %>
-      </ul>
-
-
-      <p
-        class="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed opacity-0 animate-fadeIn"
-      >
-        Discover unique places to stay, experiences to remember, and hosts who
-        care.
-      </p>
-    </main> -->
-<main class="pt-32 pb-24 bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] min-h-screen">
 
   <!-- Page Header -->
   <section class="max-w-7xl mx-auto px-6 mb-16">
@@ -154,7 +52,7 @@
         <!-- Image -->
         <div class="relative h-60 overflow-hidden">
           <img
-            src="<%= home.photoUrl %>"
+            src="<%= home.photo %>"
             alt="<%= home.houseName %>"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />

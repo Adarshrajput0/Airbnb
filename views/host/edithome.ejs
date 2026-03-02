@@ -1,139 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add home to the airbnb</title>
-  </head>
-  <body>
-    <header>
-      <h1>Register your home here:</h1>
-    </header>
-    <main>
-      <form action="/add-home" method="POST">
-        <input
-          type="text"
-          name="housename"
-          placeholder="Enter the name of the house"
-        />
-        <input type="submit" />
-      </form>
-    </main>
-  </body>
-</html> 
-
-
- -->
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Home to Airbnb</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-
-  <body
-    class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] font-sans"
-  >
-    <header class="mb-6 relative">
-      <h1 class="text-5xl font-semibold text-[#222] relative group">
-        Register your home here:
-        <span
-          class="absolute left-1/2 bottom-[-6px] w-0 h-0.5 bg-[#ff385c] transition-[width,left] duration-300 ease-in-out group-hover:w-2/5 group-hover:left-[30%]"
-        ></span>
-      </h1>
-    </header>
-
-    <nav
-      class="w-full fixed top-0 left-0 z-50 backdrop-blur-md bg-[#ff385c]/90 shadow-lg"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <h2
-          class="text-2xl font-bold text-white tracking-wide cursor-pointer hover:scale-105 transition-transform duration-300"
-        >
-          Airbnb
-        </h2>
-        <div class="flex items-center gap-4">
-          <a
-            href="/"
-            class="flex flex-col items-center gap-1 text-white font-medium transition-all duration-300 group"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              class="w-5 h-5 group-hover:scale-110 transition-transform duration-300"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 9.75L12 4.5l9 5.25M5.25 10.5V19.5A1.5 1.5 0 006.75 21h10.5a1.5 1.5 0 001.5-1.5V10.5"
-              />
-            </svg>
-
-            <span class="relative">
-              Go to Home
-              <span
-                class="absolute left-0 -bottom-0.5 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
-              ></span>
-            </span>
-          </a>
-        </div>
-      </div>
-    </nav>
-
-    <main class="flex flex-col items-center w-full max-w-md">
-      <form action="/add-home" method="POST" class="flex flex-col gap-4 w-full">
-        <input
-          type="text"
-          name="houseName"
-          placeholder="Enter the name of the house"
-          class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff385c] transition"
-        />
-
-        <input
-          type="text"
-          name="price"
-          placeholder="Price per night"
-          class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff385c] transition"
-        />
-
-        <input
-          type="text"
-          name="location"
-          placeholder="Enter your location"
-          class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff385c] transition"
-        />
-
-        <input
-          type="text"
-          name="rating"
-          placeholder="Rating"
-          class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff385c] transition"
-        />
-
-        <input
-          type="text"
-          name="photoUrl"
-          placeholder="Enter photo url"
-          class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff385c] transition"
-        />
-
-        <input
-          type="submit"
-          value="Add Home"
-          class="px-6 py-3 text-white bg-[#ff385c] rounded-lg font-medium text-base transition-all duration-300 hover:bg-[#e31c5f] hover:shadow-lg hover:-translate-y-1 cursor-pointer"
-        />
-      </form>
-    </main>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -219,68 +83,7 @@
         </div>
       </nav>
     </header>
-    <!-- ✅ HEADER END -->
-
-    <!-- ✅ PAGE CONTENT -->
-    <!-- <main class="pt-32 flex flex-col items-center">
-      <h1 class="text-5xl font-semibold text-[#222] mb-10 relative group">
-        <%= editing ? "Edit" : "Register"%>
-        your home here:
-        </span>
-      </h1>
-
-      <form
-        action="/<%= editing ? "edithome" : "add-home" %>" method="POST"
-        class="flex flex-col gap-4 w-full max-w-md"
-      >
-      <input type ="hidden" name="id" value="<%= editing ? home._id : ''%>"/>
-        <input
-          type="text"
-          name="houseName"
-          value="<%= editing ? home.houseName : ''%>"
-          placeholder="Enter the name of the house"
-          class="px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff385c]"
-        />
-
-        <input
-          type="text"
-          name="price"
-          value="<%= editing ? home.price : ''%>"
-          placeholder="Price per night"
-          class="px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff385c]"
-        />
-
-        <input
-          type="text"
-          name="location"
-          value="<%= editing ? home.location : ''%>"
-          placeholder="Enter your location"
-          class="px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff385c]"
-        />
-
-        <input
-          type="text"
-          name="rating"
-          value="<%= editing ? home.rating : ''%>"
-          placeholder="Rating"
-          class="px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff385c]"
-        />
-
-        <input
-          type="text"
-          name="photoUrl"
-          value="<%= editing ? home.photoUrl : ''%>"
-          placeholder="Enter photo url"
-          class="px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff385c]"
-        />
-
-        <input
-          type="submit"
-          value="<%= editing ? "Update Home" : "Add Home"%>"
-          class="px-6 py-3 text-white bg-[#ff385c] rounded-lg font-medium hover:bg-[#e31c5f] hover:shadow-lg hover:-translate-y-1"
-        />
-      </form>
-    </main> -->
+   
 
     <main class="pt-32 pb-20 flex justify-center bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7]">
   <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-10">
@@ -299,6 +102,7 @@
     <form 
       action="/<%= editing ? "edithome" : "add-home" %>" 
       method="POST"
+      enctype="multipart/form-data"
       class="space-y-6"
     >
 
@@ -426,11 +230,10 @@
           Photo URL
         </label>
         <input
-          type="text"
-          name="photoUrl"
-          value="<%= editing ? home.photoUrl : '' %>"
-          placeholder="https://example.com/home.jpg"
-          required
+          type="file"
+          name="photo"
+          accept="image/jpg, image/jpeg, image/png"
+        
           class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff385c] focus:outline-none"
         />
       </div>

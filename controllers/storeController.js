@@ -1,6 +1,5 @@
 const Home = require("../models/home");
 const User = require("../models/user");
-const Favourite = require("../models/favourite");
 
 exports.getIndex = (req, res, next) => {
   console.log("Session value:", req.session);
@@ -24,11 +23,7 @@ exports.getHomes = (req, res, next) => {
       user: req.session.user,
     });
   });
-  // console.log(registeredHomes);
-  // res.sendFile(path.join(__dirname, "../", "views", "home.html"));
 };
-
-// exports.registeredHomes = registeredHomes;
 
 exports.getBookings = (req, res, next) => {
   // Home.find((registeredHomes) =>
@@ -40,19 +35,16 @@ exports.getBookings = (req, res, next) => {
   });
 };
 
-exports.getFavouriteList = (req, res, next) => {
-  Favourite.find()
-    .populate("houseId")
-    .then((favourites) => {
-      const favouriteHomes = favourites.map((fav) => fav.houseId);
-      res.render("store/favourite-list", {
-        favouriteHomes: favouriteHomes,
-        pageTitle: "My Favourites",
-        currentPage: "favourites",
-        isLoggedIn: req.isLoggedIn,
-        user: req.session.user,
-      });
-    });
+exports.getFavouriteList = async (req, res, next) => {
+  const userId = req.session.user._id;
+  const user = await User.findById(userId).populate("favourites");
+  res.render("store/favourite-list", {
+    favouriteHomes: user.favourites,
+    pageTitle: "My Favourites",
+    currentPage: "favourites",
+    isLoggedIn: req.isLoggedIn,
+    user: req.session.user,
+  });
 };
 
 exports.postAddToFavourite = async (req, res, next) => {

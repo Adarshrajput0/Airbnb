@@ -20,13 +20,19 @@
 
     <!-- Hero Image -->
     <div class="relative rounded-3xl overflow-hidden shadow-xl">
-      <img
-        src="<%= home.photoUrl %>"
-        alt="<%= home.houseName %>"
+      <!-- <img
+        src="<%= home.photo %>"
+        alt="<%= home.name %>"
         class="w-full h-[420px] object-cover"
-      />
+      /> -->
 
-      <!-- Price Badge -->
+      <img
+  src="<%= home.photo.startsWith('/') ? home.photo : '/' + home.photo.replace(/\\/g, '/') %>"
+  alt="<%= home.houseName %>"
+  class="w-full h-[420px] object-cover"
+/>
+
+      
       <div class="absolute top-6 right-6 bg-black/70 text-white px-5 py-2 rounded-full text-sm font-semibold backdrop-blur">
         ₹ <%= home.price %> / night
       </div>

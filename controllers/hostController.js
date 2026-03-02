@@ -1,4 +1,5 @@
 const Home = require("../models/home");
+const fs = require("fs");
 
 exports.getAddHome = (req, res, next) => {
   res.render("host/edithome", {
@@ -53,17 +54,33 @@ exports.postAddHome = (req, res, next) => {
     price,
     location,
     rating,
-    photoUrl,
     description,
     maxguest,
     propertytype,
   } = req.body;
+  console.log(
+    houseName,
+    price,
+    location,
+    rating,
+    description,
+    maxguest,
+    propertytype,
+  );
+  console.log("Received file:", req.file);
+
+  if (!req.file) {
+    return res.status(422).send("No file uploaded or invalid file type.");
+  }
+
+  // const photo = req.file.path;
+  const photo = `/uploads/${req.file.filename}`;
   const home = new Home({
     houseName,
     price,
     location,
     rating,
-    photoUrl,
+    photo,
     description,
     maxguest,
     propertytype,
@@ -82,11 +99,11 @@ exports.postEditHome = (req, res, next) => {
     price,
     location,
     rating,
-    photoUrl,
     description,
     maxguest,
     propertytype,
   } = req.body;
+  //  const photo = req.file.path;
 
   Home.findById(id)
     .then((home) => {
@@ -94,10 +111,20 @@ exports.postEditHome = (req, res, next) => {
       home.price = price;
       home.location = location;
       home.rating = rating;
-      home.photoUrl = photoUrl;
       home.description = description;
       home.maxguest = maxguest;
       home.propertytype = propertytype;
+
+      if (req.file) {
+        fs.unlink(home.photo, (err) => {
+          if (err) {
+            console.log("Error while deleting file ", err);
+          }
+        });
+        // home.photo = req.file.path;
+        home.photo = `/uploads/${req.file.filename}`;
+      }
+
       home
         .save()
         .then((result) => {
