@@ -1,5 +1,4 @@
 const Home = require("../models/home");
-const fs = require("fs");
 
 exports.getAddHome = (req, res, next) => {
   res.render("host/edithome", {
@@ -74,7 +73,7 @@ exports.postAddHome = (req, res, next) => {
   }
 
   // const photo = req.file.path;
-  const photo = `/uploads/${req.file.filename}`;
+  const photo = req.file.path; // Cloudinary URL
   const home = new Home({
     houseName,
     price,
@@ -116,13 +115,7 @@ exports.postEditHome = (req, res, next) => {
       home.propertytype = propertytype;
 
       if (req.file) {
-        fs.unlink(home.photo, (err) => {
-          if (err) {
-            console.log("Error while deleting file ", err);
-          }
-        });
-        // home.photo = req.file.path;
-        home.photo = `/uploads/${req.file.filename}`;
+        home.photo = req.file.path;
       }
 
       home

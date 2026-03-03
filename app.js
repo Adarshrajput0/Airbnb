@@ -1,3 +1,4 @@
+require("dotenv").config();
 const DB_PATH =
   "mongodb+srv://Adarsh:Adarsh@cluster0.tmsiqs5.mongodb.net/airbnb?appName=Cluster0";
 
@@ -7,11 +8,11 @@ const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const authRouter = require("./routes/authRouter");
 const rootDir = require("./utils/pathUtils");
-const multer = require("multer");
 const errorsController = require("./controllers/error");
 const { default: mongoose } = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
+require("dotenv").config();
 
 const app = express();
 
@@ -31,34 +32,8 @@ const randomString = (length) => {
   return result;
 };
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, randomString(10) + "-" + file.originalname);
-  },
-});
-
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg"
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-const multerOptions = {
-  storage,
-  fileFilter,
-};
 app.use(express.urlencoded());
-app.use(multer(multerOptions).single("photo"));
 app.use(express.static(path.join(rootDir, "public")));
-app.use("/uploads", express.static(path.join(rootDir, "uploads")));
 
 app.use(
   session({
