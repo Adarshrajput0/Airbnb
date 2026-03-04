@@ -1,45 +1,40 @@
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/bookings.css">
 
-<div class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] py-16 px-6">
+<%- include('../partials/header') %>
 
-  <div class="max-w-5xl mx-auto">
+<div class="booking-page">
 
-    <!-- Page Title -->
-    <h1 class="text-4xl font-bold text-gray-900 mb-12 text-center">
-      🏡 Your Bookings
-    </h1>
+  <div class="booking-container">
 
-    <!-- Bookings Grid -->
-    <div class="grid gap-8 md:grid-cols-2">
+    <h1 class="booking-title">🏡 Your Bookings</h1>
+
+    <div class="booking-grid">
 
       <% bookings.forEach(booking => { %>
 
-        <div class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 p-8 space-y-6 border border-gray-100">
+        <div class="booking-card">
 
-          <!-- Home Name -->
-          <h3 class="text-2xl font-bold text-gray-800">
+          <h3 class="booking-home">
             <%= booking.home.houseName %>
           </h3>
 
-          <!-- Divider -->
-          <div class="h-px bg-gray-200"></div>
+          <div class="booking-divider"></div>
 
-          <!-- Booking Details -->
-          <div class="space-y-3 text-gray-600 text-sm">
+          <div class="booking-details">
 
-            <div class="flex justify-between">
-              <span class="font-medium text-gray-700">Check-In</span>
+            <div class="booking-row">
+              <span class="booking-label">Check-In</span>
               <span><%= booking.checkInDate.toDateString() %></span>
             </div>
 
-            <div class="flex justify-between">
-              <span class="font-medium text-gray-700">Check-Out</span>
+            <div class="booking-row">
+              <span class="booking-label">Check-Out</span>
               <span><%= booking.checkOutDate.toDateString() %></span>
             </div>
 
-            <div class="flex justify-between">
-              <span class="font-medium text-gray-700">Total Price</span>
-              <span class="text-[#FF385C] font-bold text-lg">
+            <div class="booking-row">
+              <span class="booking-label">Total Price</span>
+              <span class="booking-price">
                 ₹ <%= booking.totalPrice %>
               </span>
             </div>
