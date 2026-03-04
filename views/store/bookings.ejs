@@ -1,23 +1,57 @@
-
 <script src="https://cdn.tailwindcss.com"></script>
-    <%- include('../partials/head') %>   
-  </head>
-   
-  <body>
-    <!-- <%- include('../partials/header') %> -->
-     <%- include('../partials/header', { 
-      isLoggedIn: isLoggedIn, 
-      user: user 
-}) %>
-    <main class="container mx-auto mt-20 text-center">
-      <h2 class="text-4xl font-bold text-red-500 mb-4">My Bookings</h2>
-      <p class="text-2xl text-gray-700 mb-8">Bookings will appear here</p>
-      <a
-        href="/"
-        class="bg-red-500 text-white py-2 px-6 rounded-lg hover:bg-red-600 transition duration-300"
-        >Go Back Home</a
-      >
-    </main>
-  </body>
-  
-</html>
+
+<div class="min-h-screen bg-gradient-to-b from-[#fff1f2] via-white to-[#f7f7f7] py-16 px-6">
+
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mb-12 text-center">
+      🏡 Your Bookings
+    </h1>
+
+    <!-- Bookings Grid -->
+    <div class="grid gap-8 md:grid-cols-2">
+
+      <% bookings.forEach(booking => { %>
+
+        <div class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 p-8 space-y-6 border border-gray-100">
+
+          <!-- Home Name -->
+          <h3 class="text-2xl font-bold text-gray-800">
+            <%= booking.home.houseName %>
+          </h3>
+
+          <!-- Divider -->
+          <div class="h-px bg-gray-200"></div>
+
+          <!-- Booking Details -->
+          <div class="space-y-3 text-gray-600 text-sm">
+
+            <div class="flex justify-between">
+              <span class="font-medium text-gray-700">Check-In</span>
+              <span><%= booking.checkInDate.toDateString() %></span>
+            </div>
+
+            <div class="flex justify-between">
+              <span class="font-medium text-gray-700">Check-Out</span>
+              <span><%= booking.checkOutDate.toDateString() %></span>
+            </div>
+
+            <div class="flex justify-between">
+              <span class="font-medium text-gray-700">Total Price</span>
+              <span class="text-[#FF385C] font-bold text-lg">
+                ₹ <%= booking.totalPrice %>
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,5 +1,6 @@
 const Home = require("../models/home");
 const User = require("../models/user");
+const Booking = require("../models/booking");
 
 exports.getIndex = (req, res, next) => {
   console.log("Session value:", req.session);
@@ -85,5 +86,17 @@ exports.getHomeDetails = (req, res, next) => {
         user: req.session.user,
       });
     }
+  });
+};
+
+exports.getBookings = async (req, res) => {
+  const bookings = await Booking.find({
+    user: req.session.user._id,
+  }).populate("home");
+
+  res.render("store/bookings", {
+    bookings: bookings,
+    isLoggedIn: req.session.isLoggedIn,
+    user: req.session.user,
   });
 };

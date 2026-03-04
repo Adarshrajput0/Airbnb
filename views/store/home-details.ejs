@@ -104,15 +104,42 @@
           </div>
           <div>
 
-          <button
-            class="w-full py-4 rounded-full
-                   bg-[#FF385C] text-white font-semibold text-m
-                   hover:bg-[#E31C5F] transition
-                   shadow-md hover:shadow-m
-                   active:scale-[0.97]"
-          >
-            Book Now
-          </button>
+          
+  <form action="/bookings" method="POST" class="space-y-4">
+
+  <!-- Hidden Home ID -->
+  <input type="hidden" name="homeId" value="<%= home._id %>" />
+
+  <!-- Check In -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Check-in</label>
+    <input type="date" name="checkIn" required
+      class="w-full mt-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#FF385C]">
+  </div>
+
+  <!-- Check Out -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Check-out</label>
+    <input type="date" name="checkOut" required
+      class="w-full mt-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#FF385C]">
+  </div>
+
+  <!-- Guests -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Guests</label>
+    <input type="number" name="guests" min="1" value="1" required
+      class="w-full mt-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#FF385C]">
+  </div>
+
+  <button type="submit"
+    class="w-full py-4 rounded-full
+           bg-[#FF385C] text-white font-semibold
+           hover:bg-[#E31C5F] transition shadow-md">
+    Book Now
+  </button>
+
+</form>
+
 
           </div>
           <div>

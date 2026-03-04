@@ -13,6 +13,7 @@ const { default: mongoose } = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
 require("dotenv").config();
+const bookingRouter = require("./routes/bookingRouter");
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
 
 app.use(storeRouter);
 app.use(authRouter);
+app.use(bookingRouter);
 app.use("/host", (req, res, next) => {
   if (req.user && req.user.userType === "host") {
     next();
